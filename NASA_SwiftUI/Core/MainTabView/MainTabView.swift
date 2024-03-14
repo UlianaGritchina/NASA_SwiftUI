@@ -12,7 +12,7 @@ struct MainTabView: View {
         TabView {
             ApodView()
                 .tabItem {
-                    Label("APODd", systemImage: "moon.stars.circle")
+                    Label("APOD", systemImage: "moon.stars.circle")
                 }
         }
     }
