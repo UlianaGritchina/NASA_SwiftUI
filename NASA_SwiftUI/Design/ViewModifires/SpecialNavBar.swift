@@ -10,7 +10,7 @@ import SwiftUI
 struct SpecialNavBar: ViewModifier {
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
-            .font: UIFont(name: "NASA", size: 40)!
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 20)!
         ]
     }
     
