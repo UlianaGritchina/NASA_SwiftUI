@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E432BB82BA30C3D000DA18D /* ApodView.swift */; };
+		0E432BBC2BA3103B000DA18D /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E432BBB2BA3103B000DA18D /* Nasa.ttf */; };
 		0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */; };
 		0E70F7042BA0AD1900342811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E70F7032BA0AD1900342811 /* Assets.xcassets */; };
 		0E70F7072BA0AD1900342811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E70F7062BA0AD1900342811 /* Preview Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E432BB82BA30C3D000DA18D /* ApodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodView.swift; sourceTree = "<group>"; };
+		0E432BBB2BA3103B000DA18D /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		0E70F6FC2BA0AD1800342811 /* NASA_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASA_SwiftUIApp.swift; sourceTree = "<group>"; };
 		0E70F7032BA0AD1900342811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +40,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E432BB72BA3089C000DA18D /* Apod */ = {
+			isa = PBXGroup;
+			children = (
+				0E432BB82BA30C3D000DA18D /* ApodView.swift */,
+			);
+			path = Apod;
+			sourceTree = "<group>";
+		};
+		0E432BBA2BA3102F000DA18D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0E432BBB2BA3103B000DA18D /* Nasa.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0E70F6F32BA0AD1800342811 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +92,7 @@
 		0E70F7132BA0AD2A00342811 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				0E432BBA2BA3102F000DA18D /* Fonts */,
 				0E70F7052BA0AD1900342811 /* Preview Content */,
 				0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */,
 				0E70F7032BA0AD1900342811 /* Assets.xcassets */,
@@ -85,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				0E70F7152BA0ADA200342811 /* MainTabView */,
+				0E432BB72BA3089C000DA18D /* Apod */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -163,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E432BBC2BA3103B000DA18D /* Nasa.ttf in Resources */,
 				0E70F7072BA0AD1900342811 /* Preview Assets.xcassets in Resources */,
 				0E70F7042BA0AD1900342811 /* Assets.xcassets in Resources */,
 			);
@@ -177,6 +200,7 @@
 			files = (
 				0E70F7092BA0AD1900342811 /* Persistence.swift in Sources */,
 				0E70F70C2BA0AD1900342811 /* NASA_SwiftUI.xcdatamodeld in Sources */,
+				0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */,
 				0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */,
 				0E70F7172BA0ADAF00342811 /* MainTabView.swift in Sources */,
 			);
@@ -315,6 +339,7 @@
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NASA-SwiftUI-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Universe ONE";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -350,6 +375,7 @@
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NASA-SwiftUI-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Universe ONE";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
