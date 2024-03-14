@@ -19,6 +19,9 @@ struct ApodView: View {
                 }
             }
             .navigationTitle("APOD")
+            .fullScreenCover(isPresented: $viewModel.isOpenGoogleTranslate) {
+                WebBrowserView(url: viewModel.googleTranslateURL)
+            }
         }
     }
 }
@@ -30,11 +33,13 @@ struct ApodView: View {
 extension ApodView {
     
     private var mainContent: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 10) {
             dateView
             apodImageView
+            apodInfo
         }
         .padding(.horizontal, 16)
+        .padding(.bottom)
     }
     
     private var dateView: some View {
@@ -61,12 +66,21 @@ extension ApodView {
                     Text(viewModel.apod?.copyright ?? "")
                 }
                 .font(.system(size: 14, design: .rounded))
-                Text(viewModel.apod?.title ?? "")
-                    .font(.title2)
-                    .padding(.top, 10)
-                    .padding(.bottom, 5)
-                Text(viewModel.apod?.explanation ?? "")
             }
+        }
+    }
+    
+    private var apodInfo: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(viewModel.apod?.title ?? "")
+                .font(.title2)
+            
+            Text(viewModel.apod?.explanation ?? "")
+            
+            Button("Open in Google Translate") {
+                viewModel.openGoogleTranslate()
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }
