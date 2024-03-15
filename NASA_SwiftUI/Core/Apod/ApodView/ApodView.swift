@@ -34,6 +34,9 @@ extension ApodView {
     
     private var mainContent: some View {
         VStack(spacing: 10) {
+            if viewModel.isLoading {
+                Text("Updating...")
+            }
             dateView
             apodImageView
             apodInfo

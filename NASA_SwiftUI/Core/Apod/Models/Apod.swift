@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Apod {
+struct Apod: Codable {
     let title: String
     let copyright: String
     let explanation: String

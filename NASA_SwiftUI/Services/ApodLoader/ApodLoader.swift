@@ -25,7 +25,7 @@ final class ApodLoader {
     
     // MARK: Private methods
     
-    private func buildURL(by parameters: ApodLoaderParameters?) -> URL? {
+    private func buildURL(by parameters: ApodLoaderParameters? = nil) -> URL? {
         guard let parameters else { return URL(string: baseURL) }
         var urlString = baseURL
         if let date = parameters.date {
@@ -69,7 +69,17 @@ final class ApodLoader {
         }
         
         let imageData = try await loadImageData(from: apodEntity.hdurl)
+        let apod = mapApod(from: apodEntity, imageData: imageData)
         
-        return mapApod(from: apodEntity, imageData: imageData)
+        return apod
+    }
+    
+    func loadActualApodDate() async throws -> String? {
+        guard let url = buildURL() else { return nil }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        guard let apodDate = try? JSONDecoder().decode(ApodDate.self, from: data) else {
+            throw NetworkError.noData
+        }
+        return apodDate.date
     }
 }

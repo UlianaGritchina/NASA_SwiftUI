@@ -12,6 +12,7 @@ import Foundation
     // MARK: Constants
     
     private let apodLoader = ApodLoader.shared
+    private let userDefaultManager = UserDefaultsManager.shared
     
     // MARK: Published
     
@@ -19,9 +20,10 @@ import Foundation
     @Published private(set) var googleTranslateURL: String = ""
     
     @Published var isOpenGoogleTranslate = false
+    @Published private(set) var isLoading = false
     
     init() {
-        fetchApod()
+        setApod()
     }
     
     var apodDateString: String {
@@ -30,10 +32,26 @@ import Foundation
     
     // MARK: Private methods
     
+    private func setApod() {
+        apod = userDefaultManager.getApod()
+        Task {
+            do {
+                let actualDate = try await apodLoader.loadActualApodDate()
+                if actualDate != apod?.date {
+                    fetchApod()
+                }
+            }
+        }
+    }
+    
     private func fetchApod() {
+        isLoading = true
         Task {
             do {
                 apod = try await apodLoader.loadApod()
+                guard let apod else { return }
+                userDefaultManager.saveApod(apod)
+                isLoading = false
             }
         }
     }

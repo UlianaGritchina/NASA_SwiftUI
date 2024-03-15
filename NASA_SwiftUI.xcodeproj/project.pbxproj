@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E28DE252BA41959004A3294 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */; };
+		0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE262BA41D4E004A3294 /* ApodDate.swift */; };
 		0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E432BB82BA30C3D000DA18D /* ApodView.swift */; };
 		0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */; };
 		0E70F7042BA0AD1900342811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E70F7032BA0AD1900342811 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		0E28DE262BA41D4E004A3294 /* ApodDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDate.swift; sourceTree = "<group>"; };
 		0E432BB82BA30C3D000DA18D /* ApodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodView.swift; sourceTree = "<group>"; };
 		0E70F6FC2BA0AD1800342811 /* NASA_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASA_SwiftUIApp.swift; sourceTree = "<group>"; };
@@ -60,12 +64,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E28DE222BA418C5004A3294 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0EF3F77F2BA32722000D2815 /* ApodLoader */,
+				0E28DE232BA418E4004A3294 /* UserDeafaultsManager */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0E28DE232BA418E4004A3294 /* UserDeafaultsManager */ = {
+			isa = PBXGroup;
+			children = (
+				0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */,
+			);
+			path = UserDeafaultsManager;
+			sourceTree = "<group>";
+		};
 		0E432BB72BA3089C000DA18D /* Apod */ = {
 			isa = PBXGroup;
 			children = (
 				0EF3F77E2BA32681000D2815 /* ApodView */,
 				0EF3F7822BA328E8000D2815 /* Models */,
-				0EF3F77F2BA32722000D2815 /* ApodLoader */,
 			);
 			path = Apod;
 			sourceTree = "<group>";
@@ -97,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0E70F7132BA0AD2A00342811 /* SupportingFiles */,
+				0E28DE222BA418C5004A3294 /* Services */,
 				0EF3F77A2BA31720000D2815 /* Design */,
 				0E70F7142BA0AD9C00342811 /* Core */,
 			);
@@ -170,8 +191,8 @@
 		0EF3F77E2BA32681000D2815 /* ApodView */ = {
 			isa = PBXGroup;
 			children = (
-				0E432BB82BA30C3D000DA18D /* ApodView.swift */,
 				0EF3F7872BA32C81000D2815 /* ApodViewModel.swift */,
+				0E432BB82BA30C3D000DA18D /* ApodView.swift */,
 			);
 			path = ApodView;
 			sourceTree = "<group>";
@@ -189,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				0EF3F7832BA328F1000D2815 /* Apod.swift */,
-				0EF3F7852BA3290F000D2815 /* ApodLoaderParameters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,7 +217,9 @@
 		0EF3F7892BA32F60000D2815 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0EF3F7852BA3290F000D2815 /* ApodLoaderParameters.swift */,
 				0EF3F78A2BA32F6F000D2815 /* ApodEntity.swift */,
+				0E28DE262BA41D4E004A3294 /* ApodDate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +324,7 @@
 			files = (
 				0EF3F79A2BA33B67000D2815 /* WebBrowserViewModel.swift in Sources */,
 				0E70F7092BA0AD1900342811 /* Persistence.swift in Sources */,
+				0E28DE252BA41959004A3294 /* UserDefaultsManager.swift in Sources */,
 				0EF3F7992BA33B67000D2815 /* WebViewStore.swift in Sources */,
 				0EF3F7842BA328F1000D2815 /* Apod.swift in Sources */,
 				0EF3F7882BA32C81000D2815 /* ApodViewModel.swift in Sources */,
@@ -310,6 +333,7 @@
 				0E70F70C2BA0AD1900342811 /* NASA_SwiftUI.xcdatamodeld in Sources */,
 				0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */,
 				0EF3F7982BA33B67000D2815 /* WebViewRepresentable.swift in Sources */,
+				0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */,
 				0EF3F7862BA3290F000D2815 /* ApodLoaderParameters.swift in Sources */,
 				0EF3F78B2BA32F6F000D2815 /* ApodEntity.swift in Sources */,
 				0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */,
