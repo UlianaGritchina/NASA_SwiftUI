@@ -34,10 +34,10 @@ extension ApodView {
     
     private var mainContent: some View {
         VStack(spacing: 10) {
-            if viewModel.isLoading {
-                Text("Updating...")
-            }
             dateView
+            if viewModel.isLoading {
+                ProgressView()
+            }
             apodImageView
             apodInfo
         }
@@ -46,14 +46,25 @@ extension ApodView {
     }
     
     private var dateView: some View {
-        HStack(spacing: 0) {
+        DatePicker(
+            selection: $viewModel.selectedDate,
+            in: ...viewModel.actualApodDate,
+            displayedComponents: .date
+        ) {
             Text("Astronomy picture of day: ")
-            Button(viewModel.apodDateString) {
-                
+        }
+        .font(.system(size: 15, design: .monospaced))
+        .overlay {
+            if viewModel.isLoadingDate {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundStyle(Color.secondaryGray)
+                    .transition(.opacity)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .font(.system(size: 15, design: .monospaced))
+        .animation(.default, value: viewModel.isLoadingDate)
+        .onChange(of: viewModel.selectedDate) { _ in
+            viewModel.findApod()
+        }
     }
     
     @ViewBuilder private var apodImageView: some View {

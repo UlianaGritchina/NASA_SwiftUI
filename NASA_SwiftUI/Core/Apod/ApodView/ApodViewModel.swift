@@ -13,14 +13,18 @@ import Foundation
     
     private let apodLoader = ApodLoader.shared
     private let userDefaultManager = UserDefaultsManager.shared
+    private let dateFormatter = DateFormatManager.shared
     
     // MARK: Published
     
     @Published private(set) var apod: Apod?
     @Published private(set) var googleTranslateURL: String = ""
-    
-    @Published var isOpenGoogleTranslate = false
     @Published private(set) var isLoading = false
+    @Published private(set) var isLoadingDate = false
+    
+    @Published var selectedDate: Date = Date()
+    @Published var actualApodDate: Date = Date()
+    @Published var isOpenGoogleTranslate = false
     
     init() {
         setApod()
@@ -30,13 +34,23 @@ import Foundation
         apod?.date ?? ""
     }
     
+    var apodDate: Date? {
+        dateFormatter.stringToDate(apodDateString)
+    }
+    
     // MARK: Private methods
     
     private func setApod() {
         apod = userDefaultManager.getApod()
+        isLoadingDate = true
         Task {
             do {
                 let actualDate = try await apodLoader.loadActualApodDate()
+                if let date = dateFormatter.stringToDate(actualDate ?? "") {
+                    actualApodDate = date
+                    selectedDate = date
+                    isLoadingDate = false
+                }
                 if actualDate != apod?.date {
                     fetchApod()
                 }
@@ -57,6 +71,21 @@ import Foundation
     }
     
     // MARK: Public methods
+    
+    func findApod() {
+        if selectedDate == actualApodDate {
+            apod = userDefaultManager.getApod()
+        } else {
+            let params = ApodLoaderParameters(date: selectedDate)
+            Task {
+                do {
+                    isLoading = true
+                    apod = try await apodLoader.loadApod(with: params)
+                    isLoading = false
+                }
+            }
+        }
+    }
     
     func openGoogleTranslate() {
         guard let title = apod?.title, let explanation = apod?.explanation else { return }

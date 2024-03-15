@@ -11,5 +11,17 @@ struct ApodLoaderParameters {
     let date: Date?
     let startDate: Date?
     let endDate: Date?
-    let count: Int
+    let count: Int?
+    
+    init(
+        date: Date? = nil,
+        startDate: Date? = nil,
+        endDate: Date? = nil,
+        count: Int? = nil
+    ) {
+        self.date = date
+        self.startDate = startDate
+        self.endDate = endDate
+        self.count = count
+    }
 }

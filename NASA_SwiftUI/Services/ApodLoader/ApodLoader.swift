@@ -21,6 +21,8 @@ final class ApodLoader {
     private let apiKey = "j927yMuuumpGvzeDtYe5YUsObO9FzOEnNhp0FnZX"
     private let baseURL = "https://api.nasa.gov/planetary/apod?api_key=j927yMuuumpGvzeDtYe5YUsObO9FzOEnNhp0FnZX"
     
+    private let dateFormatter = DateFormatManager.shared
+    
     private init() { }
     
     // MARK: Private methods
@@ -29,16 +31,10 @@ final class ApodLoader {
         guard let parameters else { return URL(string: baseURL) }
         var urlString = baseURL
         if let date = parameters.date {
-            urlString = baseURL + "&date=\(formatDate(date))"
+            urlString = baseURL + "&date=\(dateFormatter.dateToString(date))"
         }
         
         return URL(string: urlString)
-    }
-    
-    private func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-DD"
-        return formatter.string(from: date)
     }
     
     private func mapApod(from apodEntity: ApodEntity, imageData: Data?) -> Apod {
