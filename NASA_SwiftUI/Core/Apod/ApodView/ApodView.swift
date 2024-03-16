@@ -11,11 +11,17 @@ struct ApodView: View {
     @StateObject private var viewModel = ApodViewModel()
     var body: some View {
         NavigationView {
-            ScrollView {
-                if viewModel.apod == nil {
-                    ProgressView()
-                } else {
-                    mainContent
+            ZStack {
+                Image("back")
+                    .resizable()
+                    .ignoresSafeArea()
+                    .opacity(0.3)
+                ScrollView(showsIndicators: false) {
+                    if viewModel.apod == nil {
+                        ProgressView()
+                    } else {
+                        mainContent
+                    }
                 }
             }
             .navigationTitle("APOD")
@@ -76,13 +82,20 @@ extension ApodView {
                     .frame(maxWidth: .infinity)
                     .scaledToFit()
                     .cornerRadius(10)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.7)
+                            .foregroundStyle(Color.white.opacity(0.5))
+                    }
                 copyrightView
             }
         } else {
-            RoundedRectangle(cornerRadius: 10)
+            Rectangle()
                 .frame(maxWidth: .infinity)
                 .frame(height: UIScreen.main.bounds.height / 3)
-                .foregroundStyle(Color.secondaryGray)
+                .opacity(0)
+                .background(.ultraThinMaterial)
+                .cornerRadius(10)
                 .overlay { ProgressView() }
         }
     }

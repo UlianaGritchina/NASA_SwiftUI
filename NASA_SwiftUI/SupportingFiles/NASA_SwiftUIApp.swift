@@ -15,6 +15,7 @@ struct NASA_SwiftUIApp: App {
         WindowGroup {
             MainTabView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .preferredColorScheme(.dark)
         }
     }
 }
