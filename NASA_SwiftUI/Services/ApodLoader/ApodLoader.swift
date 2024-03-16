@@ -37,13 +37,13 @@ final class ApodLoader {
         return URL(string: urlString)
     }
     
-    private func mapApod(from apodEntity: ApodEntity, imageData: Data?) -> Apod {
+    private func mapApod(from apodEntity: ApodEntity) -> Apod {
         Apod(
             title: apodEntity.title,
             copyright: apodEntity.copyright,
             explanation: apodEntity.explanation,
             date: apodEntity.date,
-            imageData: imageData
+            imageURL: URL(string: apodEntity.hdurl)
         )
     }
     
@@ -58,14 +58,14 @@ final class ApodLoader {
     func loadApod(with parameters: ApodLoaderParameters? = nil) async throws -> Apod {
         guard let url = buildURL(by: parameters) else { throw NetworkError.badURL }
         
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let request = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
         
         guard let apodEntity = try? JSONDecoder().decode(ApodEntity.self, from: data) else {
             throw NetworkError.noData
         }
         
-        let imageData = try await loadImageData(from: apodEntity.hdurl)
-        let apod = mapApod(from: apodEntity, imageData: imageData)
+        let apod = mapApod(from: apodEntity)
         
         return apod
     }

@@ -22,6 +22,7 @@ struct ApodView: View {
             .fullScreenCover(isPresented: $viewModel.isOpenGoogleTranslate) {
                 WebBrowserView(url: viewModel.googleTranslateURL)
             }
+            .animation(.default, value: viewModel.isLoading)
         }
     }
 }
@@ -75,12 +76,24 @@ extension ApodView {
                     .frame(maxWidth: .infinity)
                     .scaledToFit()
                     .cornerRadius(10)
-                HStack(spacing: 3) {
-                    Image(systemName: "c.circle")
-                    Text(viewModel.apod?.copyright ?? "")
-                }
-                .font(.system(size: 14, design: .rounded))
+                copyrightView
             }
+        } else {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(maxWidth: .infinity)
+                .frame(height: UIScreen.main.bounds.height / 3)
+                .foregroundStyle(Color.secondaryGray)
+                .overlay { ProgressView() }
+        }
+    }
+    
+    @ViewBuilder private var copyrightView: some View {
+        if let copyright = viewModel.apod?.copyright {
+            HStack(spacing: 3) {
+                Image(systemName: "c.circle")
+                Text(copyright)
+            }
+            .font(.system(size: 14, design: .rounded))
         }
     }
     

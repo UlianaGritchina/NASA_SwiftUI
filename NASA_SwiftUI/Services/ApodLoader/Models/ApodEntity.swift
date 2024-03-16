@@ -8,16 +8,23 @@
 import Foundation
 
 struct ApodEntity: Decodable {
-    let copyright: String
     let date: String
     let explanation: String
     let hdurl: String
-    let mediaType, serviceVersion, title: String
+    let copyright: String?
+    let mediaType: String
+    let serviceVersion: String
+    let title: String
     let url: String
     
     enum CodingKeys: String, CodingKey {
-        case copyright, date, explanation, hdurl, title, url
+        case date
+        case explanation
+        case hdurl
+        case copyright
         case mediaType = "media_type"
         case serviceVersion = "service_version"
+        case title
+        case url
     }
 }

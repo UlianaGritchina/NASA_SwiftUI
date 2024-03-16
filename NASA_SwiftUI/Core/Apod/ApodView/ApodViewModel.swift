@@ -42,7 +42,6 @@ import Foundation
     
     private func setApod() {
         apod = userDefaultManager.getApod()
-        isLoadingDate = true
         Task {
             do {
                 let actualDate = try await apodLoader.loadActualApodDate()
@@ -64,8 +63,11 @@ import Foundation
             do {
                 apod = try await apodLoader.loadApod()
                 guard let apod else { return }
-                userDefaultManager.saveApod(apod)
                 isLoading = false
+                if let imageURL = apod.imageURL?.absoluteString {
+                    self.apod?.imageData = try await apodLoader.loadImageData(from: imageURL)
+                    userDefaultManager.saveApod(self.apod!)
+                }
             }
         }
     }
@@ -82,6 +84,9 @@ import Foundation
                     isLoading = true
                     apod = try await apodLoader.loadApod(with: params)
                     isLoading = false
+                    if let imageURL = apod?.imageURL?.absoluteString {
+                        apod?.imageData = try await apodLoader.loadImageData(from: imageURL)
+                    }
                 }
             }
         }
