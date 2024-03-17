@@ -11,6 +11,7 @@
 		0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE262BA41D4E004A3294 /* ApodDate.swift */; };
 		0E28DE2A2BA44985004A3294 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE292BA44985004A3294 /* DateFormatManager.swift */; };
 		0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E432BB82BA30C3D000DA18D /* ApodView.swift */; };
+		0E4343D92BA6CD40007C8B7F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4343D82BA6CD40007C8B7F /* ImageView.swift */; };
 		0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */; };
 		0E70F7042BA0AD1900342811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E70F7032BA0AD1900342811 /* Assets.xcassets */; };
 		0E70F7072BA0AD1900342811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E70F7062BA0AD1900342811 /* Preview Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		0E28DE262BA41D4E004A3294 /* ApodDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDate.swift; sourceTree = "<group>"; };
 		0E28DE292BA44985004A3294 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		0E432BB82BA30C3D000DA18D /* ApodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodView.swift; sourceTree = "<group>"; };
+		0E4343D82BA6CD40007C8B7F /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0E70F6FC2BA0AD1800342811 /* NASA_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASA_SwiftUIApp.swift; sourceTree = "<group>"; };
 		0E70F7032BA0AD1900342811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,17 +97,10 @@
 		0E432BB72BA3089C000DA18D /* Apod */ = {
 			isa = PBXGroup;
 			children = (
-				0EF3F77E2BA32681000D2815 /* ApodView */,
 				0EF3F7822BA328E8000D2815 /* Models */,
+				0EF3F77E2BA32681000D2815 /* ApodView */,
 			);
 			path = Apod;
-			sourceTree = "<group>";
-		};
-		0E432BBA2BA3102F000DA18D /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		0E70F6F32BA0AD1800342811 = {
@@ -146,12 +141,11 @@
 		0E70F7132BA0AD2A00342811 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0E432BBA2BA3102F000DA18D /* Fonts */,
 				0E70F7052BA0AD1900342811 /* Preview Content */,
+				0E70F7182BA0ADBF00342811 /* CoreData */,
 				0E70F6FF2BA0AD1800342811 /* NASA_SwiftUIApp.swift */,
 				0E70F7032BA0AD1900342811 /* Assets.xcassets */,
 				0E70F7082BA0AD1900342811 /* Persistence.swift */,
-				0E70F7182BA0ADBF00342811 /* CoreData */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -187,6 +181,7 @@
 				0EF3F79C2BA33C87000D2815 /* ActivityView */,
 				0EF3F7922BA33B67000D2815 /* WebBrowser */,
 				0EF3F77B2BA31727000D2815 /* ViewModifires */,
+				0E4343D82BA6CD40007C8B7F /* ImageView.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -333,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4343D92BA6CD40007C8B7F /* ImageView.swift in Sources */,
 				0EF3F79A2BA33B67000D2815 /* WebBrowserViewModel.swift in Sources */,
 				0E70F7092BA0AD1900342811 /* Persistence.swift in Sources */,
 				0E28DE252BA41959004A3294 /* UserDefaultsManager.swift in Sources */,

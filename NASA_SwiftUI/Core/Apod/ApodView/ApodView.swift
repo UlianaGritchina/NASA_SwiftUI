@@ -11,11 +11,8 @@ struct ApodView: View {
     @StateObject private var viewModel = ApodViewModel()
     var body: some View {
         NavigationView {
-            ZStack {
-                Image("back")
-                    .resizable()
-                    .ignoresSafeArea()
-                    .opacity(0.3)
+            ZStack(alignment: .top) {
+                background
                 ScrollView(showsIndicators: false) {
                     if viewModel.apod == nil {
                         ProgressView()
@@ -23,12 +20,17 @@ struct ApodView: View {
                         mainContent
                     }
                 }
+                .animation(.default, value: viewModel.isLoading)
+                blackout
+                if viewModel.isShowCalendar {
+                    calendarView
+                }
             }
             .navigationTitle("APOD")
             .fullScreenCover(isPresented: $viewModel.isOpenGoogleTranslate) {
                 WebBrowserView(url: viewModel.googleTranslateURL)
             }
-            .animation(.default, value: viewModel.isLoading)
+            .animation(.smooth, value: viewModel.isShowCalendar)
         }
     }
 }
@@ -53,14 +55,16 @@ extension ApodView {
     }
     
     private var dateView: some View {
-        DatePicker(
-            selection: $viewModel.selectedDate,
-            in: ...viewModel.actualApodDate,
-            displayedComponents: .date
-        ) {
+        HStack(spacing: .zero) {
             Text("Astronomy picture of day: ")
+                .font(.system(size: 15, design: .monospaced))
+            Spacer()
+            Button(viewModel.selectedDateString) {
+                viewModel.showCalendar()
+            }
+            .buttonStyle(.bordered)
+            .foregroundStyle(Color.white)
         }
-        .font(.system(size: 15, design: .monospaced))
         .overlay {
             if viewModel.isLoadingDate {
                 RoundedRectangle(cornerRadius: 8)
@@ -69,35 +73,27 @@ extension ApodView {
             }
         }
         .animation(.default, value: viewModel.isLoadingDate)
-        .onChange(of: viewModel.selectedDate) { _ in
-            viewModel.findApod()
-        }
     }
     
     @ViewBuilder private var apodImageView: some View {
         if let imageData = viewModel.apod?.imageData {
             VStack(alignment: .leading) {
-                Image(uiImage: UIImage(data: imageData)!)
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 0.7)
-                            .foregroundStyle(Color.white.opacity(0.5))
-                    }
+                ImageView(imageData: imageData)
                 copyrightView
             }
         } else {
-            Rectangle()
-                .frame(maxWidth: .infinity)
-                .frame(height: UIScreen.main.bounds.height / 3)
-                .opacity(0)
-                .background(.ultraThinMaterial)
-                .cornerRadius(10)
-                .overlay { ProgressView() }
+            imagePlaceholder
         }
+    }
+    
+    private var imagePlaceholder: some View {
+        Rectangle()
+            .frame(maxWidth: .infinity)
+            .frame(height: UIScreen.main.bounds.height / 3)
+            .opacity(0)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
+            .overlay { ProgressView() }
     }
     
     @ViewBuilder private var copyrightView: some View {
@@ -122,5 +118,60 @@ extension ApodView {
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
+    }
+    
+    private var calendarView: some View {
+        VStack {
+            HStack {
+                if viewModel.isShowBackToTodayButton {
+                    Button("Today") { viewModel.resetDate() }
+                        .font(.headline)
+                }
+                Spacer()
+                closeCalendarButton
+            }
+            DatePicker(
+                selection: $viewModel.tempSelectedDate,
+                in: ...viewModel.actualApodDate,
+                displayedComponents: .date
+            ) {
+                Text("Astronomy picture of day: ")
+            }
+            .datePickerStyle(.graphical)
+            Button("Find", action: { viewModel.findApod() })
+                .font(.headline)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(.white)
+                .cornerRadius(8)
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(10)
+    }
+    
+    private var closeCalendarButton: some View {
+        Button(action: { viewModel.closeCalendar() })  {
+            Image(systemName: "xmark")
+                .font(.headline)
+                .padding(8)
+                .background(.white)
+                .clipShape(.circle)
+        }
+    }
+    
+    private var background: some View {
+        Image("back")
+            .resizable()
+            .ignoresSafeArea()
+            .opacity(0.3)
+    }
+    
+    private var blackout: some View {
+        Rectangle()
+            .foregroundStyle(Color.black)
+            .ignoresSafeArea()
+            .opacity(viewModel.isShowCalendar ? 0.5 : 0)
+            .onTapGesture { viewModel.closeCalendar()}
     }
 }

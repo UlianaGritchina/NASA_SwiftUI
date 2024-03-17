@@ -21,8 +21,10 @@ import Foundation
     @Published private(set) var googleTranslateURL: String = ""
     @Published private(set) var isLoading = false
     @Published private(set) var isLoadingDate = false
+    @Published private(set) var selectedDate: Date = Date()
+    @Published private(set)var isShowCalendar = false
     
-    @Published var selectedDate: Date = Date()
+    @Published var tempSelectedDate: Date = Date()
     @Published var actualApodDate: Date = Date()
     @Published var isOpenGoogleTranslate = false
     
@@ -36,6 +38,14 @@ import Foundation
     
     var apodDate: Date? {
         dateFormatter.stringToDate(apodDateString)
+    }
+    
+    var selectedDateString: String {
+        dateFormatter.dateToString(selectedDate, format: "d MMM YYY")
+    }
+    
+    var isShowBackToTodayButton: Bool {
+        selectedDate != actualApodDate
     }
     
     // MARK: Private methods
@@ -74,7 +84,25 @@ import Foundation
     
     // MARK: Public methods
     
+    func showCalendar() {
+        isShowCalendar = true
+    }
+    
+    func closeCalendar() {
+        tempSelectedDate = selectedDate
+        isShowCalendar = false
+    }
+    
+    func resetDate() {
+        selectedDate = actualApodDate
+        tempSelectedDate = actualApodDate
+        closeCalendar()
+        findApod()
+    }
+    
     func findApod() {
+        selectedDate = tempSelectedDate
+        isShowCalendar = false
         if selectedDate == actualApodDate {
             apod = userDefaultManager.getApod()
         } else {
