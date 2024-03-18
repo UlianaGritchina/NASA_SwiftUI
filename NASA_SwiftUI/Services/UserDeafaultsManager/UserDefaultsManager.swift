@@ -13,7 +13,7 @@ final class UserDefaultsManager {
     
     static let shared = UserDefaultsManager()
     
-    private let apodKey = "apod_Key"
+    private let apodKey = "actual_apod_Key"
     
     private init() { }
     
