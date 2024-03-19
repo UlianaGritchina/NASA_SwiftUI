@@ -17,7 +17,9 @@ struct ExploreView: View {
                     .ignoresSafeArea()
                     .opacity(0.3)
                 ScrollView {
-                    apodsList
+                    if !viewModel.apods.isEmpty {
+                        apodsList
+                    }
                 }
             }
             .navigationTitle("Explore")
@@ -34,15 +36,17 @@ struct ExploreView: View {
 
 extension ExploreView {
     
-    private var apodsList: some View {
+    @ViewBuilder private var apodsList: some View {
         LazyVStack(spacing: 25) {
-            if let apods = viewModel.apods {
-                ForEach(apods) { apod in
-                    Button(action: {viewModel.selectApod(apod)}, label: {
-                        ApodRow(apod: apod)
-                    })
-                }
+            ForEach(viewModel.apods) { apod in
+                Button(action: {viewModel.selectApod(apod)}, label: {
+                    ApodRow(apod: apod)
+                })
             }
+            ProgressView()
+                .onAppear {
+                    viewModel.loadMore()
+                }
         }
     }
 }

@@ -17,8 +17,8 @@ struct NetworkImage: View {
     
     var body: some View {
         VStack {
-            if let imageData {
-                Image(uiImage: UIImage(data: imageData)!)
+            if let imageData, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(8)

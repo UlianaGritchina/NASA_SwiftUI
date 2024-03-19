@@ -15,13 +15,13 @@ struct ApodRow: View {
             Text(apod.title)
                 .font(.title3)
                 .foregroundStyle(.white)
+                .multilineTextAlignment(.leading)
             Text(apod.date)
                 .foregroundStyle(Color.gray)
         }
         .padding()
-        .background(.ultraThinMaterial)
+        .background(.ultraThinMaterial.opacity(0.7))
         .cornerRadius(10)
-        .padding(.horizontal)
     }
 }
 
