@@ -47,7 +47,15 @@ extension ApodView {
             if viewModel.isLoading {
                 ProgressView()
             }
-            apodImageView
+            
+            if viewModel.apod?.mediaType == .image {
+                apodImageView
+            } else {
+                if let url = viewModel.apod?.imageURL?.absoluteString {
+                    WebBrowserView(url: url, isSHowBrowserUI: false)
+                }
+            }
+            
             apodInfo
         }
         .padding(.horizontal, 16)

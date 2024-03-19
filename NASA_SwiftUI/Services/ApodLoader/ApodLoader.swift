@@ -43,8 +43,28 @@ final class ApodLoader {
             copyright: apodEntity.copyright,
             explanation: apodEntity.explanation,
             date: apodEntity.date,
-            imageURL: URL(string: apodEntity.hdurl)
+            imageURL: getContentURL(apodEntity: apodEntity),
+            mediaType: mapMediaType(type: apodEntity.mediaType)
         )
+    }
+    
+    private func mapMediaType(type: String) -> ApodMediaType {
+        switch type {
+        case ApodMediaType.image.rawValue:
+            return ApodMediaType.image
+        case ApodMediaType.video.rawValue:
+            return  ApodMediaType.video
+        default:
+            return ApodMediaType.image
+        }
+    }
+    
+    private func getContentURL(apodEntity: ApodEntity) -> URL? {
+        if let hdurlString = apodEntity.hdurl {
+            return URL(string: hdurlString)
+        } else {
+            return URL(string: apodEntity.url)
+        }
     }
     
     func loadImageData(from stringUrl: String) async throws -> Data? {

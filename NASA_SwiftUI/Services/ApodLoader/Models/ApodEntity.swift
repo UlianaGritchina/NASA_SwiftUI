@@ -10,7 +10,7 @@ import Foundation
 struct ApodEntity: Decodable {
     let date: String
     let explanation: String
-    let hdurl: String
+    let hdurl: String?
     let copyright: String?
     let mediaType: String
     let serviceVersion: String
