@@ -12,7 +12,8 @@ enum ApodMediaType: String, Codable {
     case video
 }
 
-struct Apod: Codable {
+struct Apod: Codable, Identifiable {
+    var id = UUID().uuidString
     let title: String
     let copyright: String?
     let explanation: String

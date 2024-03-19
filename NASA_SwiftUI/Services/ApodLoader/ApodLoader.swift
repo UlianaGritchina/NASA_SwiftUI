@@ -33,7 +33,9 @@ final class ApodLoader {
         if let date = parameters.date {
             urlString = baseURL + "&date=\(dateFormatter.dateToString(date))"
         }
-        
+        if let count = parameters.count {
+            urlString = baseURL + "&count=\(count)"
+        }
         return URL(string: urlString)
     }
     
@@ -60,11 +62,11 @@ final class ApodLoader {
     }
     
     private func getContentURL(apodEntity: ApodEntity) -> URL? {
-        if let hdurlString = apodEntity.hdurl {
-            return URL(string: hdurlString)
-        } else {
-            return URL(string: apodEntity.url)
-        }
+//        if let hdurlString = apodEntity.hdurl {
+//            return URL(string: hdurlString)
+//        } else {
+//        }
+        return URL(string: apodEntity.url)
     }
     
     func loadImageData(from stringUrl: String) async throws -> Data? {
@@ -88,6 +90,20 @@ final class ApodLoader {
         let apod = mapApod(from: apodEntity)
         
         return apod
+    }
+    
+    func loadApods(count: Int)  async throws -> [Apod] {
+        let params = ApodLoaderParameters(count: count)
+        guard let url = buildURL(by: params) else { throw NetworkError.badURL }
+        
+        let request = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        guard let apodEntitys = try? JSONDecoder().decode([ApodEntity].self, from: data) else {
+            throw NetworkError.noData
+        }
+        
+        return apodEntitys.compactMap({ mapApod(from: $0 )})
     }
     
     func loadActualApodDate() async throws -> String? {

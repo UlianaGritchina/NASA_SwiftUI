@@ -148,8 +148,8 @@ extension ApodView {
             .datePickerStyle(.graphical)
             Button("Find", action: { viewModel.findApod() })
                 .font(.headline)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 10)
+                .padding(.horizontal, 32)
+                .padding(.vertical, 8)
                 .background(.white)
                 .cornerRadius(8)
         }

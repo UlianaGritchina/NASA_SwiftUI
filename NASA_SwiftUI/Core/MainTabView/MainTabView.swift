@@ -14,6 +14,10 @@ struct MainTabView: View {
                 .tabItem {
                     Label("APOD", systemImage: "moon.stars.circle")
                 }
+            ExploreView()
+                .tabItem {
+                    Label("Explore", systemImage: "sparkles")
+                }
         }
     }
 }
