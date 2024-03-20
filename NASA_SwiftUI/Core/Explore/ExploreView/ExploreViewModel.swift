@@ -25,7 +25,7 @@ extension ExploreView {
             fetchApods()
         }
         
-        // MARK: - Private methods
+        // MARK: Private methods
         
         private func fetchApods() {
             Task {
@@ -35,7 +35,7 @@ extension ExploreView {
             }
         }
         
-        // MARK: - Public methods
+        // MARK: Public methods
         
         func loadMore() {
             Task {

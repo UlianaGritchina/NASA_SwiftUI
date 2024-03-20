@@ -23,6 +23,8 @@
 		0EAAAF942BA9A516007B6E7C /* ApodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAAAF932BA9A516007B6E7C /* ApodRow.swift */; };
 		0EAAAF962BA9A571007B6E7C /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAAAF952BA9A571007B6E7C /* NetworkImage.swift */; };
 		0EAAAF992BA9AA03007B6E7C /* ApodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAAAF982BA9AA03007B6E7C /* ApodDetailView.swift */; };
+		0EE1E58A2BAB06A00088BEF4 /* ApodDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1E5892BAB06A00088BEF4 /* ApodDetailViewModel.swift */; };
+		0EE1E58C2BAB0B550088BEF4 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1E58B2BAB0B550088BEF4 /* ImageBackground.swift */; };
 		0EF3F77D2BA31732000D2815 /* SpecialNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F77C2BA31732000D2815 /* SpecialNavBar.swift */; };
 		0EF3F7812BA32736000D2815 /* ApodLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7802BA32736000D2815 /* ApodLoader.swift */; };
 		0EF3F7842BA328F1000D2815 /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7832BA328F1000D2815 /* Apod.swift */; };
@@ -54,6 +56,8 @@
 		0EAAAF932BA9A516007B6E7C /* ApodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodRow.swift; sourceTree = "<group>"; };
 		0EAAAF952BA9A571007B6E7C /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
 		0EAAAF982BA9AA03007B6E7C /* ApodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailView.swift; sourceTree = "<group>"; };
+		0EE1E5892BAB06A00088BEF4 /* ApodDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDetailViewModel.swift; sourceTree = "<group>"; };
+		0EE1E58B2BAB0B550088BEF4 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
 		0EF3F77C2BA31732000D2815 /* SpecialNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialNavBar.swift; sourceTree = "<group>"; };
 		0EF3F7802BA32736000D2815 /* ApodLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodLoader.swift; sourceTree = "<group>"; };
 		0EF3F7832BA328F1000D2815 /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
@@ -189,10 +193,9 @@
 		0EAAAF8D2BA97704007B6E7C /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				0EAAAF972BA9A9F6007B6E7C /* ApodDetail */,
+				0EE1E58D2BAB0BB70088BEF4 /* ExploreView */,
 				0EAAAF922BA9A50A007B6E7C /* ApodRow */,
-				0EAAAF8E2BA9771B007B6E7C /* ExploreViewModel.swift */,
-				0EAAAF902BA9772E007B6E7C /* ExploreView.swift */,
+				0EAAAF972BA9A9F6007B6E7C /* ApodDetail */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -208,9 +211,19 @@
 		0EAAAF972BA9A9F6007B6E7C /* ApodDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0EE1E5892BAB06A00088BEF4 /* ApodDetailViewModel.swift */,
 				0EAAAF982BA9AA03007B6E7C /* ApodDetailView.swift */,
 			);
 			path = ApodDetail;
+			sourceTree = "<group>";
+		};
+		0EE1E58D2BAB0BB70088BEF4 /* ExploreView */ = {
+			isa = PBXGroup;
+			children = (
+				0EAAAF8E2BA9771B007B6E7C /* ExploreViewModel.swift */,
+				0EAAAF902BA9772E007B6E7C /* ExploreView.swift */,
+			);
+			path = ExploreView;
 			sourceTree = "<group>";
 		};
 		0EF3F77A2BA31720000D2815 /* Design */ = {
@@ -221,6 +234,7 @@
 				0EF3F77B2BA31727000D2815 /* ViewModifires */,
 				0E4343D82BA6CD40007C8B7F /* ImageView.swift */,
 				0EAAAF952BA9A571007B6E7C /* NetworkImage.swift */,
+				0EE1E58B2BAB0B550088BEF4 /* ImageBackground.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -384,8 +398,10 @@
 				0E70F70C2BA0AD1900342811 /* NASA_SwiftUI.xcdatamodeld in Sources */,
 				0E28DE2A2BA44985004A3294 /* DateFormatManager.swift in Sources */,
 				0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */,
+				0EE1E58C2BAB0B550088BEF4 /* ImageBackground.swift in Sources */,
 				0EF3F7982BA33B67000D2815 /* WebViewRepresentable.swift in Sources */,
 				0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */,
+				0EE1E58A2BAB06A00088BEF4 /* ApodDetailViewModel.swift in Sources */,
 				0EF3F7862BA3290F000D2815 /* ApodLoaderParameters.swift in Sources */,
 				0EF3F78B2BA32F6F000D2815 /* ApodEntity.swift in Sources */,
 				0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */,

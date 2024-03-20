@@ -12,10 +12,8 @@ struct ExploreView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("back")
-                    .resizable()
-                    .ignoresSafeArea()
-                    .opacity(0.3)
+                Color.black
+                ImageBackground()
                 ScrollView {
                     if !viewModel.apods.isEmpty {
                         apodsList
@@ -24,7 +22,9 @@ struct ExploreView: View {
             }
             .navigationTitle("Explore")
             .sheet(isPresented: $viewModel.isShowApodView) {
-                ApodDetailView(apod: viewModel.selectedApod)
+                if let apod = viewModel.selectedApod {
+                    ApodDetailView(apod: apod)
+                }
             }
         }
     }

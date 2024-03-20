@@ -12,7 +12,7 @@ struct ApodView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                background
+                ImageBackground()
                 ScrollView(showsIndicators: false) {
                     if viewModel.apod == nil {
                         ProgressView()
@@ -166,13 +166,6 @@ extension ApodView {
                 .background(.white)
                 .clipShape(.circle)
         }
-    }
-    
-    private var background: some View {
-        Image("back")
-            .resizable()
-            .ignoresSafeArea()
-            .opacity(0.3)
     }
     
     private var blackout: some View {
