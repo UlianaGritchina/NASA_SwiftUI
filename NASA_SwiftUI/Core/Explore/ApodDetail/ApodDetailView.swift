@@ -16,10 +16,15 @@ struct ApodDetailView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .top) {
-            ImageBackground()
-            contentView
-            topBar
+        NavigationView {
+            ZStack(alignment: .top) {
+                ImageBackground()
+                contentView
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                dismissButton
+            }
         }
     }
 }
@@ -39,16 +44,11 @@ struct ApodDetailView: View {
 
 extension ApodDetailView {
     
-    private var topBar: some View {
-        HStack {
-            Spacer()
-            Button(action: { dismiss() }, label: {
-                Image(systemName: "xmark")
-            })
-            .font(.title3)
-        }
-        .padding()
-        .background(.ultraThinMaterial)
+    private var dismissButton: some View {
+        Button(action: { dismiss() }, label: {
+            Image(systemName: "xmark")
+        })
+        .font(.title3)
     }
     
     private var contentView: some View {
@@ -66,7 +66,6 @@ extension ApodDetailView {
                 apodInfo
             }
             .padding()
-            .padding(.top, 45)
         }
         .fullScreenCover(isPresented: $viewModel.isOpenGoogleTranslate) {
             WebBrowserView(url: viewModel.googleTranslateURL)
