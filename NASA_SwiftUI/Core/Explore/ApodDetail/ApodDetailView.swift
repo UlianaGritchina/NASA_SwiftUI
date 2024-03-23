@@ -25,6 +25,7 @@ struct ApodDetailView: View {
             .toolbar {
                 dismissButton
             }
+            .preferredColorScheme(.dark)
         }
     }
 }

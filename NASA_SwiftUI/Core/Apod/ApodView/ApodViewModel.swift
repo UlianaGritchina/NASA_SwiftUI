@@ -52,6 +52,7 @@ import Foundation
     
     private func setApod() {
         apod = userDefaultManager.getApod()
+        isLoadingDate = true
         Task {
             do {
                 let actualDate = try await apodLoader.loadActualApodDate()
