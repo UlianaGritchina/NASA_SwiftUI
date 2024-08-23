@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ApodEntity: Decodable {
+struct ApodNetworkEntity: Decodable {
     let date: String
     let explanation: String
     let hdurl: String?

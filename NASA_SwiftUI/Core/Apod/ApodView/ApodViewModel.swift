@@ -13,6 +13,7 @@ import Foundation
     
     private let apodLoader = ApodLoader.shared
     private let userDefaultManager = UserDefaultsManager.shared
+    private let coreDataManager = CoreDataManager.shared
     
     // MARK: Published
     
@@ -21,7 +22,8 @@ import Foundation
     @Published private(set) var isLoading = false
     @Published private(set) var isLoadingDate = false
     @Published private(set) var selectedDate: Date = Date()
-    @Published private(set)var isShowCalendar = false
+    @Published private(set) var isShowCalendar = false
+    @Published private(set) var isFavorite = false
     
     @Published var tempSelectedDate: Date = Date()
     @Published var actualApodDate: Date = Date()
@@ -51,6 +53,7 @@ import Foundation
     
     private func setApod() {
         apod = userDefaultManager.getApod()
+        setIsFavorite()
         isLoadingDate = true
         Task {
             do {
@@ -74,12 +77,19 @@ import Foundation
                 apod = try await apodLoader.loadApod()
                 guard let apod else { return }
                 isLoading = false
+                setIsFavorite()
                 if let imageURL = apod.imageURL?.absoluteString {
                     self.apod?.imageData = try await apodLoader.loadImageData(from: imageURL)
                     userDefaultManager.saveApod(self.apod!)
                 }
             }
         }
+    }
+    
+    private func setIsFavorite() {
+        guard let apod else { return }
+        let favoriteApods = coreDataManager.getApods()
+        isFavorite = favoriteApods.contains(where: { $0.date == apod.date })
     }
     
     // MARK: Public methods
@@ -105,6 +115,7 @@ import Foundation
         isShowCalendar = false
         if selectedDate == actualApodDate {
             apod = userDefaultManager.getApod()
+            setIsFavorite()
         } else {
             let params = ApodLoaderParameters(date: selectedDate)
             Task {
@@ -112,12 +123,23 @@ import Foundation
                     isLoading = true
                     apod = try await apodLoader.loadApod(with: params)
                     isLoading = false
+                    setIsFavorite()
                     if let imageURL = apod?.imageURL?.absoluteString {
                         apod?.imageData = try await apodLoader.loadImageData(from: imageURL)
                     }
                 }
             }
         }
+    }
+    
+    func addToFavorite() {
+        guard let apod else { return }
+        if isFavorite {
+            coreDataManager.deleteApod(apod: apod)
+        } else {
+            coreDataManager.addApod(apod: apod)
+        }
+        setIsFavorite()
     }
     
     func openGoogleTranslate() {

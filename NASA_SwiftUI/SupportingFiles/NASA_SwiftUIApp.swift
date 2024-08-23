@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct NASA_SwiftUIApp: App {
-    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .preferredColorScheme(.dark)
         }
     }

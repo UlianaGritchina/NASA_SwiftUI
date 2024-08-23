@@ -21,10 +21,9 @@ struct ApodDetailView: View {
                 ImageBackground()
                 contentView
             }
+            .navigationTitle(viewModel.apod.date)
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                dismissButton
-            }
+            .toolbar {  dismissButton }
             .preferredColorScheme(.dark)
         }
     }

@@ -12,7 +12,6 @@ struct ExploreView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black
                 ImageBackground()
                 ScrollView {
                     if !viewModel.apods.isEmpty {
@@ -39,14 +38,12 @@ extension ExploreView {
     @ViewBuilder private var apodsList: some View {
         LazyVStack(spacing: 25) {
             ForEach(viewModel.apods) { apod in
-                Button(action: {viewModel.selectApod(apod)}, label: {
+                Button(action: {viewModel.selectApod(apod)}) {
                     ApodRow(apod: apod)
-                })
+                }
             }
             ProgressView()
-                .onAppear {
-                    viewModel.loadMore()
-                }
+                .onAppear { viewModel.loadMore() }
         }
     }
 }

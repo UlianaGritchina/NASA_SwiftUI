@@ -37,7 +37,7 @@ final class ApodLoader {
         return URL(string: urlString)
     }
     
-    private func mapApod(from apodEntity: ApodEntity) -> Apod {
+    private func mapApod(from apodEntity: ApodNetworkEntity) -> Apod {
         Apod(
             title: apodEntity.title,
             copyright: apodEntity.copyright,
@@ -59,11 +59,7 @@ final class ApodLoader {
         }
     }
     
-    private func getContentURL(apodEntity: ApodEntity) -> URL? {
-//        if let hdurlString = apodEntity.hdurl {
-//            return URL(string: hdurlString)
-//        } else {
-//        }
+    private func getContentURL(apodEntity: ApodNetworkEntity) -> URL? {
         return URL(string: apodEntity.url)
     }
     
@@ -81,7 +77,7 @@ final class ApodLoader {
         let request = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: request)
         
-        guard let apodEntity = try? JSONDecoder().decode(ApodEntity.self, from: data) else {
+        guard let apodEntity = try? JSONDecoder().decode(ApodNetworkEntity.self, from: data) else {
             throw NetworkError.noData
         }
         
@@ -97,7 +93,7 @@ final class ApodLoader {
         let request = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: request)
         
-        guard let apodEntitys = try? JSONDecoder().decode([ApodEntity].self, from: data) else {
+        guard let apodEntitys = try? JSONDecoder().decode([ApodNetworkEntity].self, from: data) else {
             throw NetworkError.noData
         }
         

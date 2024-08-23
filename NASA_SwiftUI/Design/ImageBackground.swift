@@ -12,7 +12,12 @@ struct ImageBackground: View {
         Image("back")
             .resizable()
             .ignoresSafeArea()
-            .opacity(0.3)
+            .overlay {
+                Rectangle()
+                    .ignoresSafeArea()
+                    .foregroundStyle(Color.black)
+                    .opacity(0.5)
+            }
     }
 }
 

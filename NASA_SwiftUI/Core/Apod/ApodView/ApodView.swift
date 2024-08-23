@@ -87,7 +87,11 @@ extension ApodView {
         if let imageData = viewModel.apod?.imageData {
             VStack(alignment: .leading) {
                 ImageView(imageData: imageData)
-                copyrightView
+                HStack {
+                    copyrightView
+                    Spacer()
+                    favoriteButton
+                }
             }
         } else {
             imagePlaceholder
@@ -102,6 +106,12 @@ extension ApodView {
             .background(.ultraThinMaterial)
             .cornerRadius(10)
             .overlay { ProgressView() }
+    }
+    
+    private var favoriteButton: some View {
+        Button(action: { viewModel.addToFavorite() }) {
+            Image(systemName: viewModel.isFavorite ? "star.fill" : "star")
+        }
     }
     
     @ViewBuilder private var copyrightView: some View {

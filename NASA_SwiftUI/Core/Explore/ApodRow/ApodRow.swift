@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ApodRow: View {
+    private let coreDataManager = CoreDataManager.shared
     let apod: Apod
     var body: some View {
         VStack(alignment: .leading) {
+            
             NetworkImage(url: apod.imageURL)
-            Text(apod.title)
-                .font(.title3)
-                .foregroundStyle(.white)
-                .multilineTextAlignment(.leading)
+            
+            HStack(alignment: .top) {
+                Text(apod.title)
+                    .font(.title3)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+                
+                Button(action: {
+                    coreDataManager.addApod(apod: apod)
+                }) {
+                    Image(systemName: "star")
+                }
+            }
             Text(apod.date)
                 .foregroundStyle(Color.gray)
         }
