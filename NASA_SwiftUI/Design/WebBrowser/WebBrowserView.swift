@@ -12,30 +12,42 @@ struct WebBrowserView: View {
     @StateObject var webViewStore = WebViewStore()
     @Environment(\.dismiss) private var dismiss
 
-    init(url: String) {
-        let vm = ViewModel(stringURL: url)
+    init(url: String, isShowBrowserComponents: Bool = true) {
+        let vm = ViewModel(stringURL: url, isShowBrowserComponents: isShowBrowserComponents)
         _viewModel = StateObject(wrappedValue: vm)
     }
 
     var body: some View {
         NavigationView {
-            WebViewRepresentable(webView: webViewStore.webView)
-                .navigationTitle(webViewStore.title ?? "")
-                .navigationBarTitleDisplayMode(.inline)
-                .sheet(isPresented: $viewModel.isOpenShareView) {
-                    ActivityView(activityItems: .constant([viewModel.stringURL]))
-                }
-                .toolbar {
-                    dismissButton
-                    reloadWebViewButton
-                    bottomBar
-                }
-                .onChange(of: webViewStore.estimatedProgress, perform: { newValue in
-                    viewModel.progress = newValue
-                })
-                .overlay(alignment: .top) { progressView }
-                .onAppear { loadWebView() }
-                .navigationViewStyle(.stack)
+            if viewModel.isShowBrowserComponents {
+                WebViewRepresentable(webView: webViewStore.webView)
+                    .navigationTitle(webViewStore.title ?? "")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .sheet(isPresented: $viewModel.isOpenShareView) {
+                        ActivityView(activityItems: .constant([viewModel.stringURL]))
+                    }
+                    .toolbar {
+                        dismissButton
+                        reloadWebViewButton
+                        bottomBar
+                    }
+                    .onChange(of: webViewStore.estimatedProgress, perform: { newValue in
+                        viewModel.progress = newValue
+                    })
+                    .overlay(alignment: .top) { progressView }
+                    .onAppear { loadWebView() }
+                    .navigationViewStyle(.stack)
+            } else {
+                WebViewRepresentable(webView: webViewStore.webView)
+                    .navigationTitle(webViewStore.title ?? "")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .onAppear {
+                        if webViewStore.estimatedProgress == 0 {
+                            loadWebView()
+                        }
+                    }
+                    .navigationViewStyle(.stack)
+            }
         }
     }
 
@@ -130,7 +142,9 @@ struct WebBrowserView: View {
 
     private func loadWebView() {
         guard let url = URL(string: viewModel.stringURL) else { return }
-        webViewStore.webView.load(URLRequest(url: url))
+        DispatchQueue.main.async {
+            webViewStore.webView.load(URLRequest(url: url))
+        }
     }
 }
 

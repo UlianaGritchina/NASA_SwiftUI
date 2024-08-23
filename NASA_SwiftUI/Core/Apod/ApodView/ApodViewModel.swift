@@ -86,13 +86,13 @@ import Foundation
         }
     }
     
-    private func setIsFavorite() {
+    // MARK: Public methods
+    
+    func setIsFavorite() {
         guard let apod else { return }
         let favoriteApods = coreDataManager.getApods()
         isFavorite = favoriteApods.contains(where: { $0.date == apod.date })
     }
-    
-    // MARK: Public methods
     
     func showCalendar() {
         isShowCalendar = true

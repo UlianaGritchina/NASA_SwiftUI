@@ -8,33 +8,48 @@
 import SwiftUI
 
 struct ApodRow: View {
-    private let coreDataManager = CoreDataManager.shared
-    let apod: Apod
+    @StateObject private var viewModel: ViewModel
+    
+    init(apod: Apod) {
+        let vm = ViewModel(apod: apod)
+        _viewModel = StateObject(wrappedValue: vm)
+    }
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            
-            NetworkImage(url: apod.imageURL)
-            
-            HStack(alignment: .top) {
-                Text(apod.title)
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.leading)
+        Button(action: { viewModel.showApodDetail() }) {
+            VStack(alignment: .leading) {
                 
-                Spacer()
-                
-                Button(action: {
-                    coreDataManager.addApod(apod: apod)
-                }) {
-                    Image(systemName: "star")
+                if viewModel.apod.mediaType == .image {
+                    NetworkImage(url: viewModel.apod.imageURL)
+                } else {
+                    if let url = viewModel.apod.imageURL?.absoluteString {
+                        WebBrowserView(url: url, isShowBrowserComponents: false)
+                            .frame(maxHeight: 400)
+                    }
                 }
+                
+                HStack(alignment: .top) {
+                    Text(viewModel.apod.title)
+                        .font(.title3)
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                    
+                    Button(action: { viewModel.addToFavorite() }) {
+                        Image(systemName: viewModel.favoriteButtonImageName)
+                    }
+                }
+                Text(viewModel.apod.date)
+                    .foregroundStyle(Color.gray)
             }
-            Text(apod.date)
-                .foregroundStyle(Color.gray)
+            .padding()
+            .background(.ultraThinMaterial.opacity(0.7))
+            .cornerRadius(10)
         }
-        .padding()
-        .background(.ultraThinMaterial.opacity(0.7))
-        .cornerRadius(10)
+        .sheet(isPresented: $viewModel.isShowApodDetail) {
+            ApodDetailView(apod: viewModel.apod)
+        }
     }
 }
 

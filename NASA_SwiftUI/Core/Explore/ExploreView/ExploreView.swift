@@ -14,17 +14,17 @@ struct ExploreView: View {
             ZStack {
                 ImageBackground()
                 ScrollView {
-                    if !viewModel.apods.isEmpty {
-                        apodsList
+                    if viewModel.isLoading {
+                       Text("🛸")
+                            .padding(.top, UIScreen.main.bounds.height / 3)
+                    } else {
+                        if !viewModel.apods.isEmpty {
+                            apodsList
+                        }
                     }
                 }
             }
             .navigationTitle("Explore")
-            .sheet(isPresented: $viewModel.isShowApodView) {
-                if let apod = viewModel.selectedApod {
-                    ApodDetailView(apod: apod)
-                }
-            }
         }
     }
 }
@@ -38,9 +38,7 @@ extension ExploreView {
     @ViewBuilder private var apodsList: some View {
         LazyVStack(spacing: 25) {
             ForEach(viewModel.apods) { apod in
-                Button(action: {viewModel.selectApod(apod)}) {
-                    ApodRow(apod: apod)
-                }
+                ApodRow(apod: apod)
             }
             ProgressView()
                 .onAppear { viewModel.loadMore() }

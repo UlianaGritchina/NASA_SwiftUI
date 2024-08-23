@@ -10,6 +10,8 @@ import Foundation
 extension WebBrowserView {
     @MainActor final class ViewModel: ObservableObject {
         
+        let isShowBrowserComponents: Bool
+        
         var stringURL: String
         
         @Published var isOpenShareView = false
@@ -17,8 +19,9 @@ extension WebBrowserView {
         @Published var progress = 0.0
         
         
-        init(stringURL: String) {
+        init(stringURL: String, isShowBrowserComponents: Bool) {
             self.stringURL = stringURL
+            self.isShowBrowserComponents = isShowBrowserComponents
         }
         
         var isShowingProgressBar: Bool {
@@ -28,6 +31,5 @@ extension WebBrowserView {
         func openShareView() {
             isOpenShareView = true
         }
-        
     }
 }

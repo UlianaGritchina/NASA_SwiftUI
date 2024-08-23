@@ -17,10 +17,7 @@ extension ExploreView {
         // MARK: Published
         
         @Published private(set) var apods: [Apod] = []
-        @Published private(set) var selectedApod: Apod?
-        
-        @Published var isShowApodView = false
-        
+        @Published private(set) var isLoading = false
         init() {
             fetchApods()
         }
@@ -28,9 +25,11 @@ extension ExploreView {
         // MARK: Private methods
         
         private func fetchApods() {
+            isLoading = true
             Task {
                 do {
                     apods = try await apodLoader.loadApods(count: 10)
+                    isLoading = false
                 }
             }
         }
@@ -44,11 +43,6 @@ extension ExploreView {
                     apods += newApods
                 }
             }
-        }
-        
-        func selectApod(_ apod: Apod) {
-            selectedApod = apod
-            isShowApodView = true
         }
     }
 }

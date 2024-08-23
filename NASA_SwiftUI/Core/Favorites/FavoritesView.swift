@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-extension FavoritesView {
-    @MainActor final class ViewModel: ObservableObject {
-        
-        private let coreDataManager = CoreDataManager.shared
-        
-        @Published var apods: [Apod] = []
-        
-        func fetchApods() {
-            apods = coreDataManager.getApods()
-        }
-    }
-}
-
 struct FavoritesView: View {
     @StateObject private var viewModel = ViewModel()
     
@@ -28,14 +15,22 @@ struct FavoritesView: View {
             ZStack {
                 ImageBackground()
                 ScrollView(showsIndicators: false) {
-                    LazyVStack(spacing: 25) {
-                        ForEach(viewModel.apods) { apod in
-                            ApodRow(apod: apod)
+                    if viewModel.apods.isEmpty {
+                        Text("No Favourites yet")
+                            .font(.title)
+                            .padding(.top, 20)
+                    } else {
+                        VStack(spacing: 25) {
+                            ForEach(viewModel.apods) { apod in
+                                ApodRow(apod: apod)
+                            }
                         }
+                        .padding(.bottom, 20)
                     }
                 }
+                .refreshable { viewModel.fetchApods() }
             }
-            .navigationTitle("Favorites")
+            .navigationTitle("Favourites")
             .onAppear {
                 viewModel.fetchApods()
             }

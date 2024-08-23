@@ -5,6 +5,7 @@
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="explanation" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="imageURL" optional="YES" attributeType="String"/>
         <attribute name="mediaType" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>

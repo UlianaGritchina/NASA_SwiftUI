@@ -15,6 +15,8 @@
 		0E19AEEF2C789CD2003099CF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEEE2C789CD1003099CF /* StringExtension.swift */; };
 		0E19AEF22C78A35A003099CF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEF12C78A35A003099CF /* CoreDataManager.swift */; };
 		0E19AEF52C78A4B5003099CF /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEF42C78A4B5003099CF /* FavoritesView.swift */; };
+		0E19AEF72C78C744003099CF /* ApodRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEF62C78C744003099CF /* ApodRowViewModel.swift */; };
+		0E19AEF92C78C7F4003099CF /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEF82C78C7F4003099CF /* FavoritesViewModel.swift */; };
 		0E28DE252BA41959004A3294 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */; };
 		0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE262BA41D4E004A3294 /* ApodDate.swift */; };
 		0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E432BB82BA30C3D000DA18D /* ApodView.swift */; };
@@ -49,6 +51,8 @@
 		0E19AEEE2C789CD1003099CF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0E19AEF12C78A35A003099CF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0E19AEF42C78A4B5003099CF /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		0E19AEF62C78C744003099CF /* ApodRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodRowViewModel.swift; sourceTree = "<group>"; };
+		0E19AEF82C78C7F4003099CF /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		0E28DE262BA41D4E004A3294 /* ApodDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDate.swift; sourceTree = "<group>"; };
 		0E432BB82BA30C3D000DA18D /* ApodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodView.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 		0E19AEF32C78A4A8003099CF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				0E19AEF82C78C7F4003099CF /* FavoritesViewModel.swift */,
 				0E19AEF42C78A4B5003099CF /* FavoritesView.swift */,
 			);
 			path = Favorites;
@@ -244,6 +249,7 @@
 		0EAAAF922BA9A50A007B6E7C /* ApodRow */ = {
 			isa = PBXGroup;
 			children = (
+				0E19AEF62C78C744003099CF /* ApodRowViewModel.swift */,
 				0EAAAF932BA9A516007B6E7C /* ApodRow.swift */,
 			);
 			path = ApodRow;
@@ -418,6 +424,7 @@
 				0EF3F77D2BA31732000D2815 /* SpecialNavBar.swift in Sources */,
 				0E70F70C2BA0AD1900342811 /* Apods.xcdatamodeld in Sources */,
 				0E19AEF52C78A4B5003099CF /* FavoritesView.swift in Sources */,
+				0E19AEF92C78C7F4003099CF /* FavoritesViewModel.swift in Sources */,
 				0E19AEEA2C789BDE003099CF /* WebViewStore.swift in Sources */,
 				0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */,
 				0EE1E58C2BAB0B550088BEF4 /* ImageBackground.swift in Sources */,
@@ -425,6 +432,7 @@
 				0EE1E58A2BAB06A00088BEF4 /* ApodDetailViewModel.swift in Sources */,
 				0EF3F7862BA3290F000D2815 /* ApodLoaderParameters.swift in Sources */,
 				0EF3F78B2BA32F6F000D2815 /* ApodNetworkEntity.swift in Sources */,
+				0E19AEF72C78C744003099CF /* ApodRowViewModel.swift in Sources */,
 				0E19AEE32C789B68003099CF /* WebBrowserView.swift in Sources */,
 				0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */,
 				0E19AEF22C78A35A003099CF /* CoreDataManager.swift in Sources */,

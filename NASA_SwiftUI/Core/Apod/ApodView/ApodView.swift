@@ -27,6 +27,7 @@ struct ApodView: View {
                 }
             }
             .navigationTitle("APOD")
+            .onAppear { viewModel.setIsFavorite() }
             .fullScreenCover(isPresented: $viewModel.isOpenGoogleTranslate) {
                 WebBrowserView(url: viewModel.googleTranslateURL)
             }
