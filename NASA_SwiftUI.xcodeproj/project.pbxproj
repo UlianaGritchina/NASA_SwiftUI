@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E19AEE32C789B68003099CF /* WebBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEE22C789B68003099CF /* WebBrowserView.swift */; };
+		0E19AEE52C789B90003099CF /* WebBrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEE42C789B90003099CF /* WebBrowserViewModel.swift */; };
+		0E19AEE82C789BB4003099CF /* WebVeiwRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEE72C789BB4003099CF /* WebVeiwRepresentable.swift */; };
+		0E19AEEA2C789BDE003099CF /* WebViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19AEE92C789BDE003099CF /* WebViewStore.swift */; };
 		0E28DE252BA41959004A3294 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */; };
 		0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE262BA41D4E004A3294 /* ApodDate.swift */; };
 		0E28DE2A2BA44985004A3294 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28DE292BA44985004A3294 /* DateFormatManager.swift */; };
@@ -31,14 +35,14 @@
 		0EF3F7862BA3290F000D2815 /* ApodLoaderParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7852BA3290F000D2815 /* ApodLoaderParameters.swift */; };
 		0EF3F7882BA32C81000D2815 /* ApodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7872BA32C81000D2815 /* ApodViewModel.swift */; };
 		0EF3F78B2BA32F6F000D2815 /* ApodEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F78A2BA32F6F000D2815 /* ApodEntity.swift */; };
-		0EF3F7982BA33B67000D2815 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7942BA33B67000D2815 /* WebViewRepresentable.swift */; };
-		0EF3F7992BA33B67000D2815 /* WebViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7952BA33B67000D2815 /* WebViewStore.swift */; };
-		0EF3F79A2BA33B67000D2815 /* WebBrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7962BA33B67000D2815 /* WebBrowserViewModel.swift */; };
-		0EF3F79B2BA33B67000D2815 /* WebBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F7972BA33B67000D2815 /* WebBrowserView.swift */; };
 		0EF3F79E2BA33C87000D2815 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3F79D2BA33C87000D2815 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E19AEE22C789B68003099CF /* WebBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserView.swift; sourceTree = "<group>"; };
+		0E19AEE42C789B90003099CF /* WebBrowserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserViewModel.swift; sourceTree = "<group>"; };
+		0E19AEE72C789BB4003099CF /* WebVeiwRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVeiwRepresentable.swift; sourceTree = "<group>"; };
+		0E19AEE92C789BDE003099CF /* WebViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewStore.swift; sourceTree = "<group>"; };
 		0E28DE242BA41959004A3294 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		0E28DE262BA41D4E004A3294 /* ApodDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDate.swift; sourceTree = "<group>"; };
 		0E28DE292BA44985004A3294 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
@@ -64,10 +68,6 @@
 		0EF3F7852BA3290F000D2815 /* ApodLoaderParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodLoaderParameters.swift; sourceTree = "<group>"; };
 		0EF3F7872BA32C81000D2815 /* ApodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodViewModel.swift; sourceTree = "<group>"; };
 		0EF3F78A2BA32F6F000D2815 /* ApodEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodEntity.swift; sourceTree = "<group>"; };
-		0EF3F7942BA33B67000D2815 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
-		0EF3F7952BA33B67000D2815 /* WebViewStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewStore.swift; sourceTree = "<group>"; };
-		0EF3F7962BA33B67000D2815 /* WebBrowserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebBrowserViewModel.swift; sourceTree = "<group>"; };
-		0EF3F7972BA33B67000D2815 /* WebBrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebBrowserView.swift; sourceTree = "<group>"; };
 		0EF3F79D2BA33C87000D2815 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +82,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E19AEE12C789B49003099CF /* WebBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				0E19AEE62C789BA4003099CF /* WebView */,
+				0E19AEE22C789B68003099CF /* WebBrowserView.swift */,
+				0E19AEE42C789B90003099CF /* WebBrowserViewModel.swift */,
+			);
+			path = WebBrowser;
+			sourceTree = "<group>";
+		};
+		0E19AEE62C789BA4003099CF /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				0E19AEE72C789BB4003099CF /* WebVeiwRepresentable.swift */,
+				0E19AEE92C789BDE003099CF /* WebViewStore.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		0E28DE222BA418C5004A3294 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,8 +248,8 @@
 		0EF3F77A2BA31720000D2815 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				0E19AEE12C789B49003099CF /* WebBrowser */,
 				0EF3F79C2BA33C87000D2815 /* ActivityView */,
-				0EF3F7922BA33B67000D2815 /* WebBrowser */,
 				0EF3F77B2BA31727000D2815 /* ViewModifires */,
 				0E4343D82BA6CD40007C8B7F /* ImageView.swift */,
 				0EAAAF952BA9A571007B6E7C /* NetworkImage.swift */,
@@ -281,26 +300,6 @@
 				0E28DE262BA41D4E004A3294 /* ApodDate.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		0EF3F7922BA33B67000D2815 /* WebBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				0EF3F7932BA33B67000D2815 /* WebView */,
-				0EF3F7962BA33B67000D2815 /* WebBrowserViewModel.swift */,
-				0EF3F7972BA33B67000D2815 /* WebBrowserView.swift */,
-			);
-			name = WebBrowser;
-			path = ../../../ComponentsKit/ComponentsKit/Core/WebBrowser;
-			sourceTree = "<group>";
-		};
-		0EF3F7932BA33B67000D2815 /* WebView */ = {
-			isa = PBXGroup;
-			children = (
-				0EF3F7942BA33B67000D2815 /* WebViewRepresentable.swift */,
-				0EF3F7952BA33B67000D2815 /* WebViewStore.swift */,
-			);
-			path = WebView;
 			sourceTree = "<group>";
 		};
 		0EF3F79C2BA33C87000D2815 /* ActivityView */ = {
@@ -383,31 +382,31 @@
 			files = (
 				0EAAAF912BA9772E007B6E7C /* ExploreView.swift in Sources */,
 				0EAAAF942BA9A516007B6E7C /* ApodRow.swift in Sources */,
+				0E19AEE82C789BB4003099CF /* WebVeiwRepresentable.swift in Sources */,
 				0E4343D92BA6CD40007C8B7F /* ImageView.swift in Sources */,
 				0EAAAF992BA9AA03007B6E7C /* ApodDetailView.swift in Sources */,
-				0EF3F79A2BA33B67000D2815 /* WebBrowserViewModel.swift in Sources */,
 				0E70F7092BA0AD1900342811 /* Persistence.swift in Sources */,
 				0E28DE252BA41959004A3294 /* UserDefaultsManager.swift in Sources */,
-				0EF3F7992BA33B67000D2815 /* WebViewStore.swift in Sources */,
 				0EF3F7842BA328F1000D2815 /* Apod.swift in Sources */,
 				0EF3F7882BA32C81000D2815 /* ApodViewModel.swift in Sources */,
 				0EAAAF8F2BA9771B007B6E7C /* ExploreViewModel.swift in Sources */,
 				0EAAAF962BA9A571007B6E7C /* NetworkImage.swift in Sources */,
 				0EF3F79E2BA33C87000D2815 /* ActivityView.swift in Sources */,
+				0E19AEE52C789B90003099CF /* WebBrowserViewModel.swift in Sources */,
 				0EF3F77D2BA31732000D2815 /* SpecialNavBar.swift in Sources */,
 				0E70F70C2BA0AD1900342811 /* NASA_SwiftUI.xcdatamodeld in Sources */,
+				0E19AEEA2C789BDE003099CF /* WebViewStore.swift in Sources */,
 				0E28DE2A2BA44985004A3294 /* DateFormatManager.swift in Sources */,
 				0E432BB92BA30C3D000DA18D /* ApodView.swift in Sources */,
 				0EE1E58C2BAB0B550088BEF4 /* ImageBackground.swift in Sources */,
-				0EF3F7982BA33B67000D2815 /* WebViewRepresentable.swift in Sources */,
 				0E28DE272BA41D4E004A3294 /* ApodDate.swift in Sources */,
 				0EE1E58A2BAB06A00088BEF4 /* ApodDetailViewModel.swift in Sources */,
 				0EF3F7862BA3290F000D2815 /* ApodLoaderParameters.swift in Sources */,
 				0EF3F78B2BA32F6F000D2815 /* ApodEntity.swift in Sources */,
+				0E19AEE32C789B68003099CF /* WebBrowserView.swift in Sources */,
 				0E70F7002BA0AD1800342811 /* NASA_SwiftUIApp.swift in Sources */,
 				0E70F7172BA0ADAF00342811 /* MainTabView.swift in Sources */,
 				0EF3F7812BA32736000D2815 /* ApodLoader.swift in Sources */,
-				0EF3F79B2BA33B67000D2815 /* WebBrowserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

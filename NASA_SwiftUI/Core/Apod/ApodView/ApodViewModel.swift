@@ -13,7 +13,6 @@ import Foundation
     
     private let apodLoader = ApodLoader.shared
     private let userDefaultManager = UserDefaultsManager.shared
-    private let dateFormatter = DateFormatManager.shared
     
     // MARK: Published
     
@@ -37,11 +36,11 @@ import Foundation
     }
     
     var apodDate: Date? {
-        dateFormatter.stringToDate(apodDateString)
+        apodDateString.toDate()
     }
     
     var selectedDateString: String {
-        dateFormatter.dateToString(selectedDate, format: "d MMM YYY")
+        selectedDate.dateToString(format: "d MMM YYY")
     }
     
     var isShowBackToTodayButton: Bool {
@@ -56,7 +55,7 @@ import Foundation
         Task {
             do {
                 let actualDate = try await apodLoader.loadActualApodDate()
-                if let date = dateFormatter.stringToDate(actualDate ?? "") {
+                if let date = actualDate?.toDate() {
                     actualApodDate = date
                     selectedDate = date
                     isLoadingDate = false
