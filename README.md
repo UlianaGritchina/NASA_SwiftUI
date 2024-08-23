@@ -2,5 +2,6 @@
 
 Nasa APOD API  SwiftUI, MVVM, Async/Await, CoreData, UserDefaults
 
-![Group 73](https://github.com/user-attachments/assets/6d2774fc-eb41-4d91-b4b2-39763afadff5)
+![Group 73](https://github.com/user-attachments/assets/845c0133-9180-4ca6-98b6-582ef76ba2ae)
+
 
