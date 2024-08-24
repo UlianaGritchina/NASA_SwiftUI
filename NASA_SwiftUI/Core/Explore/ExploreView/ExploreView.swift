@@ -15,7 +15,11 @@ struct ExploreView: View {
                 ImageBackground()
                 ScrollView {
                     if viewModel.isLoading {
-                       Text("🛸")
+                        ProgressView()
+                            .font(.largeTitle)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(5)
                             .padding(.top, UIScreen.main.bounds.height / 3)
                     } else {
                         if !viewModel.apods.isEmpty {
