@@ -157,12 +157,14 @@ extension ApodView {
                 Text("Astronomy picture of day: ")
             }
             .datePickerStyle(.graphical)
-            Button("Find", action: { viewModel.findApod() })
-                .font(.headline)
-                .padding(.horizontal, 32)
-                .padding(.vertical, 8)
-                .background(.white)
-                .cornerRadius(8)
+            Button(action: { viewModel.findApod() }) {
+                Text("Find")
+                    .font(.headline)
+                    .padding(.horizontal, 52)
+                    .padding(.vertical, 9)
+                    .background(.white)
+                    .cornerRadius(8)
+            }
         }
         .padding()
         .background(.ultraThinMaterial)

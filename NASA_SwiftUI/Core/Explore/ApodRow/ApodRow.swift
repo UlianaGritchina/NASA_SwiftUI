@@ -21,6 +21,10 @@ struct ApodRow: View {
                 
                 if viewModel.apod.mediaType == .image {
                     NetworkImage(url: viewModel.apod.imageURL)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.4), lineWidth: 0.5)
+                        }
                 } else {
                     if let url = viewModel.apod.imageURL?.absoluteString {
                         WebBrowserView(url: url, isShowBrowserComponents: false)
@@ -40,12 +44,15 @@ struct ApodRow: View {
                         Image(systemName: viewModel.favoriteButtonImageName)
                     }
                 }
+                .padding(.horizontal, 5)
                 Text(viewModel.apod.date)
                     .foregroundStyle(Color.gray)
+                    .padding(.horizontal, 5)
             }
-            .padding()
+            .padding(.bottom, 5)
             .background(.ultraThinMaterial.opacity(0.7))
             .cornerRadius(10)
+            .padding(.horizontal)
         }
         .sheet(isPresented: $viewModel.isShowApodDetail) {
             ApodDetailView(apod: viewModel.apod)

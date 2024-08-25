@@ -54,7 +54,6 @@ extension ApodDetailView {
     private var contentView: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 15) {
-                
                 if viewModel.apod.mediaType == .image {
                     apodImageView
                 } else {
