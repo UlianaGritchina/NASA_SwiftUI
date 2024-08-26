@@ -12,14 +12,14 @@ struct WebBrowserView: View {
     @StateObject var webViewStore = WebViewStore()
     @Environment(\.dismiss) private var dismiss
 
-    init(url: String, isShowBrowserComponents: Bool = true) {
-        let vm = ViewModel(stringURL: url, isShowBrowserComponents: isShowBrowserComponents)
+    init(url: String, showsBrowserComponents: Bool = true) {
+        let vm = ViewModel(stringURL: url, showsBrowserComponents: showsBrowserComponents)
         _viewModel = StateObject(wrappedValue: vm)
     }
 
     var body: some View {
         NavigationView {
-            if viewModel.isShowBrowserComponents {
+            if viewModel.showsBrowserComponents {
                 WebViewRepresentable(webView: webViewStore.webView)
                     .navigationTitle(webViewStore.title ?? "")
                     .navigationBarTitleDisplayMode(.inline)

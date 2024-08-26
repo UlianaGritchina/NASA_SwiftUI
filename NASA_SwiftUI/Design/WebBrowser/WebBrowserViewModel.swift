@@ -10,7 +10,7 @@ import Foundation
 extension WebBrowserView {
     @MainActor final class ViewModel: ObservableObject {
         
-        let isShowBrowserComponents: Bool
+        let showsBrowserComponents: Bool
         
         var stringURL: String
         
@@ -19,9 +19,9 @@ extension WebBrowserView {
         @Published var progress = 0.0
         
         
-        init(stringURL: String, isShowBrowserComponents: Bool) {
+        init(stringURL: String, showsBrowserComponents: Bool) {
             self.stringURL = stringURL
-            self.isShowBrowserComponents = isShowBrowserComponents
+            self.showsBrowserComponents = showsBrowserComponents
         }
         
         var isShowingProgressBar: Bool {

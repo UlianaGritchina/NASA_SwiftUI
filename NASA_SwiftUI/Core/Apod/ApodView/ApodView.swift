@@ -53,7 +53,7 @@ extension ApodView {
                 apodImageView
             } else {
                 if let url = viewModel.apod?.imageURL?.absoluteString {
-                    WebBrowserView(url: url)
+                    WebBrowserView(url: url, showsBrowserComponents: false)
                 }
             }
             
