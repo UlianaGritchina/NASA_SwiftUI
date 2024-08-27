@@ -33,7 +33,7 @@ struct ApodView: View {
             }
             .animation(.smooth, value: viewModel.isShowCalendar)
         }
-        .navigationViewStyle(.stack)
+        .navigationViewStyle(.stack)//test
     }
 }
 
