@@ -35,6 +35,7 @@ struct FavoritesView: View {
                 viewModel.fetchApods()
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
 

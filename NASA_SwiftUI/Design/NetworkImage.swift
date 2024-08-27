@@ -21,14 +21,14 @@ struct NetworkImage: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
-                    .cornerRadius(8)
+                 //   .cornerRadius(8)
             } else {
                 Rectangle()
                     .frame(maxWidth: .infinity)
                     .frame(height: UIScreen.main.bounds.height / 3)
                     .opacity(0)
                     .background(.ultraThinMaterial)
-                    .cornerRadius(10)
+                  //  .cornerRadius(10)
                     .overlay { ProgressView() }
             }
         }

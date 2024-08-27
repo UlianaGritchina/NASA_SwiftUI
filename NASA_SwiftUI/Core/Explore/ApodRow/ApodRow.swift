@@ -21,10 +21,6 @@ struct ApodRow: View {
                 
                 if viewModel.apod.mediaType == .image {
                     NetworkImage(url: viewModel.apod.imageURL)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray.opacity(0.4), lineWidth: 0.5)
-                        }
                 } else {
                     if let url = viewModel.apod.imageURL?.absoluteString {
                         WebBrowserView(url: url, showsBrowserComponents: false)
@@ -52,6 +48,16 @@ struct ApodRow: View {
             .padding(.bottom, 5)
             .background(.ultraThinMaterial.opacity(0.7))
             .cornerRadius(10)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(
+                        LinearGradient(
+                            colors: [.gray.opacity(0.1), .gray.opacity(0.4) ],
+                            startPoint: .bottom,
+                            endPoint: .top),
+                        lineWidth: 0.5
+                    )
+            }
             .padding(.horizontal)
         }
         .sheet(isPresented: $viewModel.isShowApodDetail) {
