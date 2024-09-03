@@ -20,6 +20,7 @@ final class ApodLoader {
     
     private let apiKey = "j927yMuuumpGvzeDtYe5YUsObO9FzOEnNhp0FnZX"
     private let baseURL = "https://api.nasa.gov/planetary/apod?api_key=j927yMuuumpGvzeDtYe5YUsObO9FzOEnNhp0FnZX"
+    private let apodMapper = ApodMapper()
     
     private init() { }
     
@@ -37,39 +38,13 @@ final class ApodLoader {
         return URL(string: urlString)
     }
     
-    private func mapApod(from apodEntity: ApodNetworkEntity) -> Apod {
-        Apod(
-            title: apodEntity.title,
-            copyright: apodEntity.copyright,
-            explanation: apodEntity.explanation,
-            date: apodEntity.date,
-            imageURL: getContentURL(apodEntity: apodEntity),
-            mediaType: mapMediaType(type: apodEntity.mediaType)
-        )
-    }
-    
-    private func mapMediaType(type: String) -> ApodMediaType {
-        switch type {
-        case ApodMediaType.image.rawValue:
-            return ApodMediaType.image
-        case ApodMediaType.video.rawValue:
-            return  ApodMediaType.video
-        default:
-            return ApodMediaType.image
-        }
-    }
-    
-    private func getContentURL(apodEntity: ApodNetworkEntity) -> URL? {
-        return URL(string: apodEntity.url)
-    }
+    // MARK: Public methods
     
     func loadImageData(from stringUrl: String) async throws -> Data? {
         guard let url = URL(string: stringUrl) else { return nil }
         let (data, _) = try await URLSession.shared.data(from: url)
         return data
     }
-    
-    // MARK: Public methods
     
     func loadApod(with parameters: ApodLoaderParameters? = nil) async throws -> Apod {
         guard let url = buildURL(by: parameters) else { throw NetworkError.badURL }
@@ -81,7 +56,7 @@ final class ApodLoader {
             throw NetworkError.noData
         }
         
-        let apod = mapApod(from: apodEntity)
+        let apod = apodMapper.map(entity: apodEntity)
         
         return apod
     }
@@ -97,7 +72,7 @@ final class ApodLoader {
             throw NetworkError.noData
         }
         
-        return apodEntitys.compactMap({ mapApod(from: $0 )})
+        return apodEntitys.compactMap({ apodMapper.map(entity: $0) })
     }
     
     func loadActualApodDate() async throws -> String? {
