@@ -164,6 +164,16 @@
 			path = Apod;
 			sourceTree = "<group>";
 		};
+		0E4DF2652D8738E500855191 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0E4343D82BA6CD40007C8B7F /* ImageView.swift */,
+				0EAAAF952BA9A571007B6E7C /* NetworkImage.swift */,
+				0EE1E58B2BAB0B550088BEF4 /* ImageBackground.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		0E70F6F32BA0AD1800342811 = {
 			isa = PBXGroup;
 			children = (
@@ -289,9 +299,7 @@
 				0E19AEE12C789B49003099CF /* WebBrowser */,
 				0EF3F79C2BA33C87000D2815 /* ActivityView */,
 				0EF3F77B2BA31727000D2815 /* ViewModifires */,
-				0E4343D82BA6CD40007C8B7F /* ImageView.swift */,
-				0EAAAF952BA9A571007B6E7C /* NetworkImage.swift */,
-				0EE1E58B2BAB0B550088BEF4 /* ImageBackground.swift */,
+				0E4DF2652D8738E500855191 /* Images */,
 			);
 			path = Design;
 			sourceTree = "<group>";

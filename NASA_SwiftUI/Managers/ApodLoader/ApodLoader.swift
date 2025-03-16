@@ -61,7 +61,7 @@ final class ApodLoader {
         return apod
     }
     
-    func loadApods(count: Int)  async throws -> [Apod] {
+    func loadApods(count: Int) async throws -> [Apod] {
         let params = ApodLoaderParameters(count: count)
         guard let url = buildURL(by: params) else { throw NetworkError.badURL }
         
